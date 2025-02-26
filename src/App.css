@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(42, 27, 14);
+}
+
+.join-room-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.join-room-input {
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  background-color: #156415;
+  transition: color 0.5s;
+  height: 40px;
+}
+
+.join-room-input:hover {
+  background-color: #125b12;
+  cursor: pointer;
+}
+
+.join-room-input::placeholder {
+  color: black;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.join-room-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.join-room-button {
+  padding: 10px;
+  width: 70px;
+  background-color: #156415;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.join-room-button:hover {
+  background-color: #125b12;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.waiting-room-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #125b12;
+  padding: 25px 5px;
+  border-radius: 12px;
+}
+
+.waiting-room-text-container {
+  font-family: "Bebas Neue", sans-serif;
+  color: black;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.player-list-container {
+  font-family: "Bebas Neue", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.start-game-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.start-game-button-container button {
+  font-family: "Bebas Neue", sans-serif;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.start-game-button-container:hover button {
+  cursor: pointer;
+}
+
+
+.poker-table-container {
+  height: 50vh;
+  width: 75vw;
+  margin-top: -10vh;
+  position: relative;
+  text-align: center;
+  display: block;
+  z-index: 1;
+  transform: translateY(30px);
+}
+
+.poker-table {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%);
+  text-align: center;
+  z-index: 0;
+  background: rgb(0, 100, 0);
+  border: 10px solid rgb(82, 82, 82);
+  border-radius: 200px;
+  display: flex;
+  z-index: -1;
+  align-items: center;
+}
+
+.player {
+  position: absolute;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background: rgb(0, 100, 0);
+  color: rgb(154, 154, 154);
+  border: 2px dashed rgb(82, 82, 82);
+  width: 70px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+  transform: translate(-50%, -50%);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 700;
+}
+
+.blind-display {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  color: rgb(64, 70, 90);
+}
+
+.name-container {
+  width: 100%;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: rgb(64, 70, 90);
+
+}
+
+.blind-container {
+  width: 100%;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.you {
+  position: absolute;
+  display: block;
+  width: 145px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+}
+
+.spacer {
+  display: block;
+  height: 85px;
+}
+
+.you-container {
+  position: absolute;
+  z-index: 3;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 0px 8px;
+  border: 1px solid rgb(240, 240, 240);
+  border: 2px solid rgb(82,82,82);
+}
+
+.player-name-container {
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 2px;
+  color: black;
+}
+
+.amount-container {
+  text-align: left;
+  font-family: Bebas Neue, sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  color: black;
+}
+
+.spacer-spacer {
+  height: 30px;
+}
+
+.card-1 {
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 78px;
+  width: 58px;
+  color: rgb(253, 88, 85);
+  position: absolute;
+  transform: rotate(-6deg);
+  left: 17px;
+  z-index: 3;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.card-2 {
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 78px;
+  width: 58px;
+  color: rgb(253, 88, 85);
+  position: absolute;
+  transform: rotate(6deg);
+  right: 17px;
+  z-index: 2;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.innercard-1 {
+  background: rgb(253, 88, 85);
+  border: 5px solid rgb(255, 255, 255);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.innercard-2 {
+  background: rgb(253, 88, 85);
+  border: 5px solid rgb(255, 255, 255);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card-container {
+  height: 55px;
+}
+
+.your-card-1-container {
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 78px;
+  width: 58px;
+  position: absolute;
+  transform: rotate(-6deg);
+  left: 17px;
+  z-index: 2;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.your-card-2-container {
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 78px;
+  width: 58px;
+  position: absolute;
+  transform: rotate(6deg);
+  right: 17px;
+  z-index: 1;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.your-cards {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+}
+
+.your-cards h1 {
+  position: absolute;
+  left: 6px;
+  font-size: 44px;
+}
+
+.your-cards-card {
+  height: 26px; 
+  bottom: 5px; 
+  right: 5px; 
+  position: absolute;
+}
+
+.community-card-container {
+  position: relative;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pot-container {
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  transform: translateY(-100%);
+  top: -10px;
+  justify-content: space-around;
+}
+
+.pot {
+  text-align: left;
+  margin-bottom: 0px;
+  font-family: Rambla, sans-serif;
+  position: relative;
+  cursor: pointer;
+  width: 150px;
+  height: 30px;
+  font-size: 18px;
+  background: rgb(80, 158, 188);
+  display: flex;
+  border-radius: 5px;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  transition: 300msease-in-out;
+  opacity: 1;
+  z-index: -1;
+  transform: rotateX(0deg);
+}
+
+.community-card-container-container {
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.individual-community-card-container {
+  position: relative;
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 95px;
+  width: 72px;
+  color: rgb(253, 88, 85);
+  margin: 5px;
+}
+
+.individual-community-card {
+  height: 100%;
+  width: 100%;
+  border: 2px dashed rgb(255, 255, 255);
+}
+
+.options-container-1 {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.options-container-2 {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.individual-option-container {
+  position: relative;
+  height: 65px;
+  width: 125px;
+}
+
+.option-button {
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  border: 1px solid rgb(222, 222, 222);
+  color: black;
+  height: 60px;
+  width: 120px;
+  padding: 0px 15px;
+  top: 0px;
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 5px;
+  position: absolute;
+  background: #c8c8c8;
+  z-index: 1;
+  left: 0px;
+}
+
+.option-button:hover {
+  background-color: #585858;  
+  cursor: pointer;
+}
+
+.bet-indicator {
+  font-family: Rambla, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  margin: 0px auto;
+  width: 60px;
+  font-weight: bold;
+  position: absolute;
+  z-index: 2;
+  background: rgb(64, 70, 90);
+  border-radius: 5px;
+  color: white;
+}
+
+.dealer-indicator {
+  width: 20px;
+  height: 20px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(64, 70, 90);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transform: translate(650%, -50%);
+  font-weight: bold;
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.dealer-indicator span {
+  margin-top: 2px;
+}
+
+.community-card-1 {
+  height: 95px;
+  width: 72px;
+  margin: 5px;
+}
+
+.community-card-2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.community-card-3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.community-card-4 {
+  position: relative;
+  font-family: "Bebas Neue", sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 95px;
+  width: 72px;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.community-card-5 {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+}
+
+.community-card-5 h1 {
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  font-size: 52px;
+}
+
+.community-card-5 img {
+  height: 30px;
+  bottom: 5px;
+  right: 5px;
+  position: absolute;
+  vertical-align: middle;
+}
+
+.raise-container {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.raise-confirm-button {
+  display: flex;
+  justify-content: end;
+  width: 100%
+}
+
+.raise-slider {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #c8c8c8;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.raise-slider h1 {
+  font-family: Rambla, sans-serif;
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.bet-raise-display-container {
+  width: 70px;
+}
+
+.slider {
+  width: 300px;
+}
+
+.bet-amount-input {
+  width: 50px;
+  padding: 5px;
+  overflow: visible !important;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  font-family: 'Rambla', sans-serif; /* Replace with your font */
+  font-size: 18px; /* Adjust size as needed */
+  font-weight: bold; /* Optional for thicker text */
+}
+
