@@ -6,7 +6,7 @@ import diamondIcon from "./assets/diamond.svg";
 import spadeIcon from "./assets/spade.svg";
 import clubIcon from "./assets/club.svg";
 
-const socket = io("http://localhost:3000")
+const socket = io("https://poker-backend-q59w.onrender.com/")
 
 function App() {
   const [name, setName] = useState("");
